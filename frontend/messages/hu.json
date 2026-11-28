@@ -197,6 +197,9 @@
 	"linkDocument": "Dokumentum hivatkozása",
 	"contentSource": "Tartalom forrása",
 	"authorHint": "Kezdje üres lappal vagy sablonnal a szerkesztőben.",
+	"initialVersion": "Kezdő verzió",
+	"initialVersionHelpText": "Az első revízió száma, például egy meglévő dokumentum verziótörténetének folytatásához.",
+	"initialVersionInvalid": "Adjon meg egy 1 és 9999 közötti egész számot.",
 	"newDocumentSubtitle": "Írja meg, töltsön fel fájlt, vagy hivatkozzon külső forrásra.",
 	"linkDocumentHelp": "Hivatkozzon máshol tárolt dokumentumra (Confluence, SharePoint, DMS stb.). A hivatkozás verziókezelt, és ugyanazt a felülvizsgálati és közzétételi életciklust követi.",
 	"openLink": "Hivatkozás megnyitása",
@@ -1757,6 +1760,8 @@
 	"xRaysLoadingData": "Adatok elemzése…",
 	"xRaysView": "Megtekintés",
 	"suggestControls": "Kontrollok javaslata",
+	"resetStatus": "Állapotok visszaállítása",
+	"resetStatusHelpText": "Az eredmények átmásolódnak, de az újraértékeléshez minden követelmény visszakerül „Teendő” állapotba",
 	"createCollection": "Kapcsolt gyűjtemény létrehozása",
 	"createCollectionHelpText": "Automatikusan létrehoz egy, a projekthez kapcsolt gyűjteményt. Vegye ki a jelölést, ha gyűjtemény nélkül hozná létre a projektet.",
 	"createAppliedControlsFromSuggestionsHelpText": "Alkalmazott kontrollok létrehozása a keretrendszer követelményeinek javasolt referenciakontrolljaiból",
@@ -8702,6 +8707,154 @@
 	"glpiField": "GLPI-mező",
 	"glpiAssetMappingsHelpText": "Rendelje hozzá az eszközöket GLPI-elemekhez. Az eszközök szinkronizálása az elemtípus kiválasztása után indul.",
 	"glpiAssetTableHelpText": "Válassza ki a szinkronizálandó GLPI-eszköztípust (számítógép, szoftver, készülék…).",
+	"mcpServerUrl": "MCP-kiszolgáló URL-je",
+	"mcpServerUrlHelp": "Adja hozzá ezt az URL-t az MI-asszisztenséhez, hogy csatlakoztassa a CISO Assistanthoz.",
+	"apiAllowedIpsHint": "Ha a telepítés ezt kikényszeríti, a közvetlen API-hívásokat (személyes hozzáférési tokenek, Power BI, MI-asszisztensek, szkriptek) a rendszer csak az „Engedélyezett IP-címek” között felsorolt címekről fogadja el. A webes felületet ez nem érinti. Kérjen meg egy adminisztrátort, hogy vegye fel azokat a címeket, amelyekről ezek az eszközök csatlakoznak.",
 	"sessionExpired": "Lejárt a munkamenete. Kérjük, jelentkezzen be ismét, majd próbálja újra.",
-	"errorMcpNeedsSharedCache": "Az MI-alkalmazások csatlakoztatásához megosztott gyorsítótár (memcached) szükséges. Először állítsa be a gyorsítótárat, majd engedélyezze ezt az opciót."
+	"errorMcpNeedsSharedCache": "Az MI-alkalmazások csatlakoztatásához megosztott gyorsítótár (memcached) szükséges. Először állítsa be a gyorsítótárat, majd engedélyezze ezt az opciót.",
+	"dataImportTitle": "Adatimportálás",
+	"dataImportIntro": "Húzza ide a fájlját. A rendszer az oszlopfejlécek alapján ismeri fel a tartalmát, és az importálásig semmit sem ment.",
+	"dataImportProgress": "Előrehaladás",
+	"dataImportStageChoose": "Fájl kiválasztása",
+	"dataImportStageReview": "Áttekintés",
+	"dataImportDryRun": "Próbafuttatás",
+	"dataImportImport": "Importálás",
+	"dataImportReading": "A fájl beolvasása…",
+	"dataImportDropHere": "Húzzon ide egy fájlt, vagy kattintson a kiválasztáshoz",
+	"dataImportMaxSize": "Legfeljebb 10 MB",
+	"dataImportFormatHint": "Felismert formátum, amelyet a saját importálója egészben olvas be",
+	"dataImportTemplatesTitle": "Inkább egy sablonból indulna ki?",
+	"dataImportTemplatesHint": "Töltsön ki egyet, és húzza a fenti mezőbe: a rendszer felismeri a sablonokat, és oszlopról oszlopra leképezi őket.",
+	"dataImportLibrariesHint": "Keretrendszer vagy leképezés importálásához lásd:",
+	"dataImportSavedMappings": "Mentett leképezések",
+	"dataImportNoSavedMappings": "Még nincs.",
+	"dataImportSavedMappingsHint": "A fájljai saját oszlopokat és értékeket használnak? Képezze le őket egyszer, majd a próbafuttatás után mentse a leképezést. Legközelebb a rendszer az azonos oszlopú fájlokat automatikusan leképezi.",
+	"dataImportSheetCount": [
+		{
+			"declarations": ["input count", "local countPlural = count: plural"],
+			"selectors": ["countPlural"],
+			"match": {
+				"countPlural=one": "{count} munkalap",
+				"countPlural=other": "{count} munkalap"
+			}
+		}
+	],
+	"dataImportRowCount": [
+		{
+			"declarations": ["input count", "local countPlural = count: plural"],
+			"selectors": ["countPlural"],
+			"match": {
+				"countPlural=one": "{count} sor",
+				"countPlural=other": "{count} sor"
+			}
+		}
+	],
+	"dataImportUsedTimes": [
+		{
+			"declarations": ["input count", "local countPlural = count: plural"],
+			"selectors": ["countPlural"],
+			"match": {
+				"countPlural=one": "{count} alkalommal használva",
+				"countPlural=other": "{count} alkalommal használva"
+			}
+		}
+	],
+	"dataImportNeverUsed": "még nem használták",
+	"dataImportBy": "létrehozta: {email}",
+	"dataImportDeleteMappingConfirm": "Törli ezt a leképezést?",
+	"dataImportDeleteNamed": "{name} törlése",
+	"dataImportRecognisedAs": "Felismert formátum: {format}",
+	"dataImportToImport": "{count} importálandó",
+	"dataImportChooseAnother": "Másik fájl kiválasztása",
+	"dataImportUsingSaved": "Alkalmazott mentett leképezés:",
+	"dataImportNewColumns": "új oszlopok: {columns}",
+	"dataImportIgnoreSaved": "Mentett leképezések figyelmen kívül hagyása",
+	"dataImportSavedIgnored": "Ennél a fájlnál a mentett leképezések figyelmen kívül maradnak.",
+	"dataImportUseAgain": "Mégis használja őket",
+	"dataImportRecognised": "Felismerve",
+	"dataImportWholeFileNote": "A teljes fájlt a saját importálója olvassa be: nincs áttekintendő leképezés.",
+	"dataImportMapMyself": "A munkalapok kézi leképezése",
+	"dataImportCompanionOccurrences": "Korábbi előfordulások, a feladatokkal együtt importálva",
+	"dataImportCompanionNotes": "A sablon megjegyzései, nem importálódnak",
+	"dataImportNoDataRows": "Nincsenek adatsorok, kihagyva",
+	"dataImportHeaderOnRow": "fejléc: {row}. sor",
+	"dataImportWhatBecomes": "Mi legyen a(z) {sheet} munkalapból",
+	"dataImportChooseObject": "Válasszon objektumot…",
+	"dataImportTemplateSheetFor": "Sablonmunkalap a(z) {sheet} munkalaphoz",
+	"dataImportMatch": "{percent}%-os egyezés",
+	"dataImportColumnsMapped": "{mapped} / {total} oszlop leképezve",
+	"dataImportUnmatchedHint": "A fájl azon értékei, amelyek egyik megengedett lehetőséggel sem egyeznek",
+	"dataImportValuesToReview": [
+		{
+			"declarations": ["input count", "local countPlural = count: plural"],
+			"selectors": ["countPlural"],
+			"match": {
+				"countPlural=one": "{count} áttekintendő érték",
+				"countPlural=other": "{count} áttekintendő érték"
+			}
+		}
+	],
+	"dataImportAdjust": "Módosítás",
+	"dataImportHeaderRow": "Fejlécsor",
+	"dataImportYourColumn": "Az Ön oszlopa",
+	"dataImportSampleValues": "Mintaértékek",
+	"dataImportField": "Mező",
+	"dataImportFieldFor": "Mező a(z) {column} oszlophoz",
+	"dataImportValueFor": "Érték ehhez: {value}",
+	"dataImportNotMatched": "Nincs egyezés: válasszon értéket",
+	"dataImportKeepAsIs": "Megtartás (változatlanul elküldve)",
+	"dataImportSameValue": "Azonos érték minden sorhoz",
+	"dataImportSameValueHint": "Azokhoz a mezőkhöz, amelyeket egyik oszlop sem tölt ki. „Frissítés” módban ezek az értékek a meglévő rekordok mezőjét is felülírják.",
+	"dataImportValueForEveryRow": "Érték a(z) {field} mezőhöz minden sorban",
+	"dataImportChooseValue": "Válasszon értéket",
+	"dataImportRemoveValueFor": "A(z) {field} mező értékének eltávolítása",
+	"dataImportAddValueForEveryRow": "Érték hozzáadása minden sorhoz",
+	"dataImportAddField": "Mező hozzáadása…",
+	"dataImportCreateNewAudit": "Új audit létrehozása",
+	"dataImportUpdateAudit": "{name} frissítése",
+	"dataImportChooseFramework": "Válasszon keretrendszert…",
+	"dataImportAuditName": "Audit neve",
+	"dataImportAuditNamePlaceholder": "A harmadik felek értékelései ezen a néven hivatkozhatnak rá",
+	"dataImportChooseMatrix": "Válasszon mátrixot…",
+	"dataImportWholeFile": "Teljes fájl · {format}",
+	"dataImportDryRunFirst": "Előbb végezzen próbafuttatást ezzel a leképezéssel",
+	"dataImportDryRunDone": "Próbafuttatás: importáláskor ez történne. A rendszer semmit sem mentett.",
+	"dataImportDone": "Az importálás befejeződött",
+	"dataImportWouldBeCreated": "létrejönne",
+	"dataImportWouldBeUpdated": "frissülne",
+	"dataImportNew": "Új",
+	"dataImportStopped": "leállt",
+	"dataImportWouldAlsoCreate": "A sorokhoz kapcsolva ezek is létrejönnének: {items}",
+	"dataImportAlsoCreated": "A sorokhoz kapcsolva ezek is létrejöttek: {items}",
+	"dataImportErrorsAndWarnings": [
+		{
+			"declarations": ["input count", "local countPlural = count: plural"],
+			"selectors": ["countPlural"],
+			"match": {
+				"countPlural=one": "{count} hiba vagy figyelmeztetés",
+				"countPlural=other": "{count} hiba és figyelmeztetés"
+			}
+		}
+	],
+	"dataImportImportedWithWarning": "Figyelmeztetéssel importálva",
+	"dataImportNotImported": "Nem importálva",
+	"dataImportSaveForNextTime": "A leképezés mentése a következő alkalomra",
+	"dataImportUpdateNamed": "„{name}” frissítése",
+	"dataImportSaveAsNew": "Mentés új leképezésként",
+	"dataImportOpenStudy": "Tanulmány megnyitása",
+	"dataImportOpenAudit": "Audit megnyitása",
+	"dataImportGoTo": "Ugrás ide: {model}",
+	"dataImportRefusalHeaderRow": "A megadott fejlécsor a munkalap utolsó sora után van.",
+	"dataImportRefusalTooManySheets": "Ez a fájl túl sok munkalapot tartalmaz az elemzéshez (legfeljebb 30).",
+	"dataImportRefusalTooManyColumns": "Az egyik munkalap túl sok oszlopot tartalmaz az elemzéshez (legfeljebb 100).",
+	"dataImportRefusalUnrecognised": "Ez a fájl nem táblázat, és nem is olyan exportfájl, amelyet a rendszer be tud olvasni.",
+	"dataImportCouldNotRead": "Nem sikerült beolvasni ezt a fájlt.",
+	"dataImportIncludeOneSheet": "Jelöljön be legalább egy munkalapot.",
+	"dataImportNoLongerFits": "A leképezés már nem felel meg a fájlnak: olvassa be újra.",
+	"dataImportNameMapping": "Adjon nevet a leképezésnek.",
+	"dataImportNotAllowedSave": "Nincs jogosultsága leképezések mentésére.",
+	"dataImportCouldNotSave": "Nem sikerült menteni: {detail}",
+	"dataImportMappingSaved": "A(z) „{name}” leképezés mentve.",
+	"dataImportCouldNotDelete": "Nem sikerült törölni ezt a leképezést.",
+	"dataImportNotAllowedHere": "Nincs jogosultsága ezeket ide importálni"
 }
