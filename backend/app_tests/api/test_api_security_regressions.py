@@ -77,6 +77,12 @@ def _domain(name):
 
 
 class StubLLM:
+    def __init__(self, tool=None):
+        self.tool = tool
+
+    def tool_call(self, *a, **k):
+        return {"name": self.tool} if self.tool else None
+
     def __getattr__(self, name):
         return lambda *a, **k: ""
 
@@ -103,7 +109,9 @@ def test_chat_ebios_assist_needs_write_permission(app_config):
     sid = c.post(
         "/api/chat/sessions/", {"folder": str(dom.id), "title": "t"}, format="json"
     ).json()["id"]
-    with mock.patch("chat.views.get_llm", return_value=StubLLM()):
+    with mock.patch(
+        "chat.views.get_llm", return_value=StubLLM("workflow_ebios_rm_assist")
+    ):
         r = c.post(
             f"/api/chat/sessions/{sid}/message/",
             {"content": "help me with ebios"},
@@ -111,6 +119,32 @@ def test_chat_ebios_assist_needs_write_permission(app_config):
         )
         body = b"".join(r.streaming_content)
     assert b"permission" in body
+    assert EbiosRMStudy.objects.count() == 0
+
+
+@pytest.mark.django_db
+def test_ebios_method_question_on_a_domain_page_creates_no_study(app_config):
+    dom = _domain("D1")
+    RiskMatrix.objects.create(
+        name="M1",
+        folder=Folder.get_root_folder(),
+        is_enabled=True,
+        json_definition=RISK_MATRIX_JSON_DEFINITION,
+    )
+    c = _client(User.objects.create_superuser(email="admin@tests.com"))
+    sid = c.post(
+        "/api/chat/sessions/", {"folder": str(dom.id), "title": "t"}, format="json"
+    ).json()["id"]
+    with mock.patch("chat.views.get_llm", return_value=StubLLM()):
+        r = c.post(
+            f"/api/chat/sessions/{sid}/message/",
+            {
+                "content": "What are the five EBIOS RM workshops?",
+                "page_context": {"path": f"/folders/{dom.id}"},
+            },
+            format="json",
+        )
+        b"".join(r.streaming_content)
     assert EbiosRMStudy.objects.count() == 0
 
 
